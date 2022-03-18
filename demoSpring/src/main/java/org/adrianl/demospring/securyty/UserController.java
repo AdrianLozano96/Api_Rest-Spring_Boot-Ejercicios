@@ -12,14 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-//proceso de autenticación mediante un login usuario/contraseña
+
 @RestController
 public class UserController {
 
-	//interceptar las peticiones POST del endpoint /user y recibir como parámetros el usuario y contraseña
 	@PostMapping("user")
 	public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-		//Faltaria validar datos con la base de datos
+		
 		String token = getJWTToken(username);
 		User user = new User();
 		user.setUser(username);
@@ -27,8 +26,7 @@ public class UserController {
 		return user;
 		
 	}
-	//para construir el token, delegando en la clase de utilidad Jwts que
-	// incluye información sobre su expiración y se usa para autorizar peticiones
+
 	private String getJWTToken(String username) {
 		String secretKey = "mySecretKey";
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils

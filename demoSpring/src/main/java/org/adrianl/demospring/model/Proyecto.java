@@ -43,20 +43,20 @@ public class Proyecto {
     public LocalDate getFecha() {return fecha;} //CURRENT_TIMESTAMP en SQL
     public void setFecha(LocalDate fecha) {this.fecha = fecha;}
 
+    //@JsonBackReference // Evitar recursividad
     //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")    //poner sobre la clase
     @JsonIgnore// Ignora este lado de la relacón
     //Un proyecto tiene un repositorio y cada repositorio puede tener varios proyectos
     @ManyToOne  //Cascada
     @JoinColumn(name="repositorio_id", referencedColumnName="id")
-    //@JsonBackReference // Evitar recursividad
     public Repositorio getRepositorio() {return repositorio;}
     public void setRepositorio(Repositorio repositorio) {this.repositorio = repositorio;}
 
     //Cada proyecto pertenece a un programador
+    //@JsonBackReference    //Evitar recursividad //Qutar s no el one to
     @JsonIgnore
     @ManyToOne  //Cascada
     @JoinColumn(name="programador_id", referencedColumnName="id")
-    //@JsonBackReference    //Evitar recursividad //Qutar s no el one to
     public Programador getProgramador() {return programador;}
     public void setProgramador(Programador programador) {this.programador = programador;}
 }

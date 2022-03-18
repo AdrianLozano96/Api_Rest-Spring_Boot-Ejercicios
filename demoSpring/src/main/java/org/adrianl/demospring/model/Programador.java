@@ -44,8 +44,8 @@ public class Programador {
 
 
     //Cada programador tiene varios proyectos
-    @OneToMany(mappedBy = "programador")
     //@JsonManagedReference   //Para romper la recursividad
+    @OneToMany(mappedBy = "programador")
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", cascade = CascadeType.PERSIST)
     // @OneToMany(mappedBy = "programador", cascade = [CascadeType.ALL], orphanRemoval = true)
     public List<Proyecto> getProyectos() {return proyectos;}

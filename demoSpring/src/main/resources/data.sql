@@ -2,6 +2,26 @@ INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
 VALUES(1, true, 'admin@admin.com', 'adminpass', 'admintoken');
 INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
 VALUES(2, false, 'user@user.com', 'userpass', 'usertoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(3, true, 'admin@admin.com', 'adminpass', 'admintoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(4, false, 'user@user.com', 'userpass', 'usertoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(5, true, 'admin@admin.com', 'adminpass', 'admintoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(6, false, 'user@user.com', 'userpass', 'usertoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(7, true, 'admin@admin.com', 'adminpass', 'admintoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(8, false, 'user@user.com', 'userpass', 'usertoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(9, true, 'admin@admin.com', 'adminpass', 'admintoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(10, false, 'user@user.com', 'userpass', 'usertoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(11, true, 'admin@admin.com', 'adminpass', 'admintoken');
+INSERT INTO LOGIN(id, administrador, correo, contraseña, token)
+VALUES(12, false, 'user@user.com', 'userpass', 'usertoken');
 
 INSERT INTO PROGRAMADOR(id, nombre, salario, programador_login)
 VALUES(1, 'progadmin', 1200.0, 1);

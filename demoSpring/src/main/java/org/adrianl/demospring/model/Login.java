@@ -55,10 +55,12 @@ public class Login {
     public void setToken(String token) {
         this.token = token;
     }
-
+/*
     //LOS OneToOne MEJOR HACERLOS UNIDIRECCIONAL PARA LA HORA DE METER DATOS
-    //@OneToOne
-    //@JoinColumn(name="login_programador", referencedColumnName = "id")
-    //public Programador getProgramador() {return programador;}
-    //public void setProgramador(Programador programador) {this.programador = programador;}
+    @OneToOne
+    @JoinColumn(name="login_programador", referencedColumnName = "id")
+    public Programador getProgramador() {return programador;}
+    public void setProgramador(Programador programador) {this.programador = programador;}
+
+ */
 }

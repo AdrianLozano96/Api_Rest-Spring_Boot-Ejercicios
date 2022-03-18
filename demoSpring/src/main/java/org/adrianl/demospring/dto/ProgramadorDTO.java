@@ -16,7 +16,9 @@ public class ProgramadorDTO {
     private long id;
     private String nombre;
     private double salario;
-    private Login login;
+    //private Login login;
+    private String loginCorreo; //Tipo nombreclaseNombreatributo; //Devuelve el correo del login
+
     /*
     private long id;
     @NotBlank(message = "Debes introducir un dni")

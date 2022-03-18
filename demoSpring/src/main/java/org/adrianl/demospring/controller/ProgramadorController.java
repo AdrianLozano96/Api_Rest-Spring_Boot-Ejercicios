@@ -10,21 +10,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class ProgramadorController {    //Meterle algunas de las cosas que tene el profe
+public class ProgramadorController {
 
     private final ProgramadorRepository programadorRepository;
     private final ProgramadorMapper programadorMapper;
 
     @GetMapping("/programadores")
     public ResponseEntity<?> obtenerTodos() {
-        List<Programador> result = programadorRepository.findAll();
-        if (result.isEmpty()) {
+        List<Programador> result = programadorRepository.findAll(); //Se crea una lista
+        if (result.isEmpty()) { //Si la lista esta vacia devolver una respuesta
             return ResponseEntity.notFound().build();   //404 no hay usuarios
-        } else {
-            return ResponseEntity.ok(result);   //200
+        } else {    //Si la lista tiene contenido se devuelve
+            //return ResponseEntity.ok(result);   //200
+            List<ProgramadorDTO> listDTO = result.stream().map(programadorMapper::toDTO).collect(Collectors.toList());
+            return ResponseEntity.ok(listDTO);
         }
     }
 
@@ -71,10 +74,10 @@ public class ProgramadorController {    //Meterle algunas de las cosas que tene 
 
     @PutMapping("/programador/{id}")
     public ResponseEntity<?> editarProgramador(@RequestBody Programador editar, @PathVariable Long id) {
-        return programadorRepository.findById(id).map(p -> {
-            p.setNombre(editar.getNombre());
+        return programadorRepository.findById(id).map(p -> { //Lo que se devuelve el elemento editado
+            p.setNombre(editar.getNombre());//Lo que se va a editar del producto
             return ResponseEntity.ok(programadorRepository.save(p));    //200
-        }).orElseGet(() -> {
+        }).orElseGet(() -> {    //Sino encuentra el elemento devolver mensaje
             return ResponseEntity.notFound().build();   //404 not found
         });
     }

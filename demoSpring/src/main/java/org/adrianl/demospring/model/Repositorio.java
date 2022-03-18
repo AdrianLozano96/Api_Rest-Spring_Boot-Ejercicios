@@ -32,8 +32,8 @@ public class Repositorio {
     public String getUrl() {return url;}
     public void setUrl(String url) {this.url = url;}
 
-    @OneToMany(mappedBy="repositorio")  //MIRAR BIEN
     //@JsonManagedReference   //Para romper la recursividad
+    @OneToMany(mappedBy="repositorio")  //MIRAR BIEN
     public List<Proyecto> getProyectos() {return proyectos;}
     public void setProyectos(List<Proyecto> proyectos) {this.proyectos = proyectos;}
 }

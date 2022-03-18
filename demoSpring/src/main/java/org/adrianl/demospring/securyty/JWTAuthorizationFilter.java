@@ -19,8 +19,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
-//intercepta las invocaciones a recursos protegidos
-// para recuperar el token y determinar si el cliente tiene permisos o no
+
 public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
 	private final String HEADER = "Authorization";
@@ -53,7 +52,11 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 		return Jwts.parser().setSigningKey(SECRET.getBytes()).parseClaimsJws(jwtToken).getBody();
 	}
 
-	//Metodo para la autenticación
+	/**
+	 * Authentication method in Spring flow
+	 * 
+	 * @param claims
+	 */
 	private void setUpSpringAuthentication(Claims claims) {
 		@SuppressWarnings("unchecked")
 		List<String> authorities = (List<String>) claims.get("authorities");
@@ -61,6 +64,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 		UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(claims.getSubject(), null,
 				authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
 		SecurityContextHolder.getContext().setAuthentication(auth);
+
 	}
 
 	private boolean checkJWTToken(HttpServletRequest request, HttpServletResponse res) {
@@ -69,9 +73,5 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 			return false;
 		return true;
 	}
-	//Comprueba la existencia del token (existeJWTToken(...)).
-	//Si existe, lo desencripta y valida (validateToken(...)).
-	//Si está OK, añade la configuración necesaria al contexto de Spring
-	// para autorizar la petición (setUpSpringAuthentication(...)).
 
 }
